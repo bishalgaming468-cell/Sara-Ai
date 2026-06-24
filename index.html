@@ -30,7 +30,8 @@
   .brand-name { font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 18px; }
   .brand-sub { font-size: 10px; color: var(--text-dim); letter-spacing: 2px; text-transform: uppercase; }
   .header-actions { display: flex; gap: 8px; }
-  .icon-btn { width: 40px; height: 40px; border-radius: 12px; background: var(--glass); border: 1px solid var(--border); color: var(--text); display: grid; place-items: center; cursor: pointer; backdrop-filter: blur(10px); }
+  .icon-btn { width: 40px; height: 40px; border-radius: 12px; background: var(--glass); border: 1px solid var(--border); color: var(--text); display: grid; place-items: center; cursor: pointer; backdrop-filter: blur(10px); transition: all 0.2s; }
+  .icon-btn:active { transform: scale(0.95); }
   .icon-btn svg { width: 18px; height: 18px; }
   .stage { flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 30px; }
   .orb-wrap { position: relative; width: min(70vw, 360px); aspect-ratio: 1; display: grid; place-items: center; }
@@ -59,10 +60,11 @@
   .status-text { font-family: 'Space Grotesk', sans-serif; font-size: 22px; font-weight: 600; background: linear-gradient(135deg, #fff, var(--accent-2)); -webkit-background-clip: text; background-clip: text; color: transparent; }
   .transcript { max-width: 90%; font-size: 14px; color: var(--text-dim); min-height: 20px; font-style: italic; }
   .controls { display: flex; flex-direction: column; align-items: center; gap: 14px; padding-bottom: 10px; }
-  .mic-btn { width: 72px; height: 72px; border-radius: 50%; background: linear-gradient(135deg, var(--accent), var(--accent-3)); border: none; color: white; cursor: pointer; display: grid; place-items: center; position: relative; box-shadow: 0 10px 40px rgba(124,92,255,0.5); }
+  .mic-btn { width: 72px; height: 72px; border-radius: 50%; background: linear-gradient(135deg, var(--accent), var(--accent-3)); border: none; color: white; cursor: pointer; display: grid; place-items: center; position: relative; box-shadow: 0 10px 40px rgba(124,92,255,0.5); transition: all 0.2s; }
   .mic-btn::before { content: ''; position: absolute; inset: -8px; border-radius: 50%; border: 2px solid rgba(124,92,255,0.4); animation: micRipple 2s ease-out infinite; opacity: 0; }
   .mic-btn.active::before { opacity: 1; }
   .mic-btn.active { background: linear-gradient(135deg, var(--accent-2), var(--accent)); box-shadow: 0 10px 40px rgba(34,211,238,0.6); }
+  .mic-btn:active { transform: scale(0.95); }
   @keyframes micRipple { 0% { transform: scale(1); opacity: 0.8; } 100% { transform: scale(1.6); opacity: 0; } }
   .mic-btn svg { width: 28px; height: 28px; }
   .mic-hint { font-size: 11px; color: var(--text-dim); letter-spacing: 1px; text-transform: uppercase; }
@@ -72,6 +74,7 @@
   .modal-overlay.active { display: flex; }
   .modal { background: linear-gradient(135deg, var(--bg-1), var(--bg-2)); border: 1px solid var(--border); border-radius: 24px; padding: 32px; max-width: 480px; width: 100%; max-height: 85vh; overflow-y: auto; position: relative; }
   .modal-close { position: absolute; top: 16px; right: 16px; width: 36px; height: 36px; border-radius: 10px; background: rgba(255,255,255,0.05); border: 1px solid var(--border); color: var(--text); cursor: pointer; display: grid; place-items: center; }
+  .modal-close:active { transform: scale(0.95); }
   .modal h2 { font-family: 'Space Grotesk', sans-serif; font-size: 26px; margin-bottom: 8px; background: linear-gradient(135deg, var(--accent-2), var(--accent-3)); -webkit-background-clip: text; background-clip: text; color: transparent; }
   .modal h3 { font-size: 14px; color: var(--text-dim); margin-bottom: 20px; letter-spacing: 1px; text-transform: uppercase; }
   .modal p { font-size: 14px; line-height: 1.7; color: var(--text); margin-bottom: 14px; }
@@ -85,8 +88,10 @@
   .form-group { margin-bottom: 14px; }
   .form-group label { display: block; font-size: 12px; color: var(--text-dim); margin-bottom: 6px; }
   .form-group input, .form-group select { width: 100%; padding: 10px 14px; background: rgba(0,0,0,0.3); border: 1px solid var(--border); border-radius: 10px; color: var(--text); font-size: 13px; outline: none; }
-  .btn-primary { width: 100%; padding: 12px; background: linear-gradient(135deg, var(--accent), var(--accent-3)); border: none; border-radius: 12px; color: white; font-weight: 600; font-size: 14px; cursor: pointer; margin-top: 8px; }
-  .btn-secondary { width: 100%; padding: 10px; background: transparent; border: 1px solid var(--border); border-radius: 12px; color: var(--text); font-size: 13px; cursor: pointer; margin-top: 8px; }
+  .btn-primary { width: 100%; padding: 12px; background: linear-gradient(135deg, var(--accent), var(--accent-3)); border: none; border-radius: 12px; color: white; font-weight: 600; font-size: 14px; cursor: pointer; margin-top: 8px; transition: all 0.2s; }
+  .btn-primary:active { transform: scale(0.98); }
+  .btn-secondary { width: 100%; padding: 10px; background: transparent; border: 1px solid var(--border); border-radius: 12px; color: var(--text); font-size: 13px; cursor: pointer; margin-top: 8px; transition: all 0.2s; }
+  .btn-secondary:active { transform: scale(0.98); }
   .notice { padding: 10px 12px; background: rgba(34,211,238,0.08); border: 1px solid rgba(34,211,238,0.3); border-radius: 10px; font-size: 12px; color: var(--accent-2); margin-bottom: 14px; }
   .toast { position: fixed; top: 20px; left: 50%; transform: translateX(-50%) translateY(-100px); padding: 12px 20px; background: var(--glass); border: 1px solid var(--border); border-radius: 12px; backdrop-filter: blur(10px); font-size: 13px; z-index: 200; transition: transform 0.4s; }
   .toast.show { transform: translateX(-50%) translateY(0); }
@@ -155,7 +160,7 @@
 
 <div class="modal-overlay" id="aboutModal">
   <div class="modal">
-    <button class="modal-close" data-close>
+    <button class="modal-close" id="aboutClose">
       <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
     </button>
     <h2>About Sara</h2>
@@ -179,7 +184,7 @@
 
 <div class="modal-overlay" id="settingsModal">
   <div class="modal">
-    <button class="modal-close" data-close>
+    <button class="modal-close" id="settingsClose">
       <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
     </button>
     <h2>Settings</h2>
@@ -208,6 +213,7 @@
 <div class="toast" id="toast"></div>
 
 <script>
+// Initialize state
 const state = {
   status: 'idle',
   recognizing: false,
@@ -221,6 +227,13 @@ const state = {
   }
 };
 
+// Load saved settings
+try {
+  const saved = JSON.parse(localStorage.getItem('sara_settings') || '{}');
+  Object.assign(state.settings, saved);
+} catch(e) {}
+
+// DOM elements
 const orb = document.getElementById('orb');
 const statusEl = document.getElementById('status');
 const statusText = document.getElementById('statusText');
@@ -232,16 +245,13 @@ const waveform = document.getElementById('waveform');
 const ctx = waveform.getContext('2d');
 const toast = document.getElementById('toast');
 
-try {
-  const saved = JSON.parse(localStorage.getItem('sara_settings') || '{}');
-  Object.assign(state.settings, saved);
-} catch(e) {}
-
+// Apply settings to UI
 document.getElementById('rate').value = state.settings.rate;
 document.getElementById('pitch').value = state.settings.pitch;
 document.getElementById('rateVal').textContent = state.settings.rate;
 document.getElementById('pitchVal').textContent = state.settings.pitch;
 
+// Toast notification
 function showToast(msg, type = '') {
   toast.textContent = msg;
   toast.className = 'toast show ' + type;
@@ -249,6 +259,7 @@ function showToast(msg, type = '') {
   toast._t = setTimeout(() => toast.classList.remove('show'), 3000);
 }
 
+// Update status
 function setStatus(s, main, sub) {
   state.status = s;
   statusEl.className = 'status ' + s;
@@ -257,4 +268,331 @@ function setStatus(s, main, sub) {
   if (sub !== undefined) transcriptEl.textContent = sub || '\u00A0';
   orb.className = 'orb ' + (s !== 'idle' ? s : '');
   micBtn.classList.toggle('active', s === 'listening');
-  micHint.textContent = s === 'listening' ? 'Listening...' : s === 'thinking' ? 'Pr
+  micHint.textContent = s === 'listening' ? 'Listening...' : s === 'thinking' ? 'Processing...' : s === 'speaking' ? 'Sara is speaking...' : 'Hold or tap to talk';
+}
+
+// Waveform animation
+let waveData = new Array(64).fill(0);
+let waveTarget = new Array(64).fill(0);
+
+function resizeWave() {
+  const dpr = window.devicePixelRatio || 1;
+  const rect = waveform.getBoundingClientRect();
+  waveform.width = rect.width * dpr;
+  waveform.height = rect.height * dpr;
+  ctx.scale(dpr, dpr);
+}
+window.addEventListener('resize', resizeWave);
+resizeWave();
+
+function drawWave() {
+  const w = waveform.clientWidth;
+  const h = waveform.clientHeight;
+  ctx.clearRect(0, 0, w, h);
+  for (let i = 0; i < waveData.length; i++) {
+    waveData[i] += (waveTarget[i] - waveData[i]) * 0.2;
+  }
+  const bars = waveData.length;
+  const barW = w / bars;
+  const mid = h / 2;
+  const grad = ctx.createLinearGradient(0, 0, w, 0);
+  if (state.status === 'listening') {
+    grad.addColorStop(0, '#22d3ee');
+    grad.addColorStop(1, '#7c5cff');
+  } else if (state.status === 'thinking') {
+    grad.addColorStop(0, '#ff4ecd');
+    grad.addColorStop(1, '#7c5cff');
+  } else if (state.status === 'speaking') {
+    grad.addColorStop(0, '#a78bfa');
+    grad.addColorStop(1, '#ff4ecd');
+  } else {
+    grad.addColorStop(0, 'rgba(124,92,255,0.3)');
+    grad.addColorStop(1, 'rgba(34,211,238,0.3)');
+  }
+  ctx.fillStyle = grad;
+  for (let i = 0; i < bars; i++) {
+    const amp = waveData[i];
+    const bh = Math.max(2, amp * mid * 0.9);
+    const x = i * barW + barW * 0.2;
+    const bw = barW * 0.6;
+    ctx.fillRect(x, mid - bh, bw, bh * 2);
+  }
+  requestAnimationFrame(drawWave);
+}
+drawWave();
+
+function updateWaveFromStatus() {
+  const s = state.status;
+  if (s === 'listening') {
+    for (let i = 0; i < waveTarget.length; i++) waveTarget[i] = 0.3 + Math.random() * 0.7;
+  } else if (s === 'speaking') {
+    for (let i = 0; i < waveTarget.length; i++) waveTarget[i] = 0.4 + Math.random() * 0.6;
+  } else if (s === 'thinking') {
+    for (let i = 0; i < waveTarget.length; i++) waveTarget[i] = 0.15 + Math.random() * 0.25;
+  } else {
+    for (let i = 0; i < waveTarget.length; i++) waveTarget[i] = 0.05 + Math.random() * 0.08;
+  }
+}
+setInterval(updateWaveFromStatus, 120);
+
+// Speech Recognition
+const SR = window.SpeechRecognition || window.webkitSpeechRecognition;
+let recognition = null;
+let finalTranscript = '';
+
+if (SR) {
+  recognition = new SR();
+  recognition.continuous = false;
+  recognition.interimResults = true;
+  recognition.lang = 'en-US';
+  
+  recognition.onstart = () => {
+    state.recognizing = true;
+    finalTranscript = '';
+    setStatus('listening', 'Listening...', '');
+  };
+  
+  recognition.onresult = (e) => {
+    let interim = '';
+    for (let i = e.resultIndex; i < e.results.length; i++) {
+      const t = e.results[i][0].transcript;
+      if (e.results[i].isFinal) finalTranscript += t;
+      else interim += t;
+    }
+    transcriptEl.textContent = finalTranscript || interim || '...';
+  };
+  
+  recognition.onerror = (e) => {
+    console.error('Speech recognition error:', e.error);
+    if (e.error === 'not-allowed') {
+      showToast('Microphone access denied. Please allow microphone permission.', 'error');
+    } else if (e.error === 'no-speech') {
+      showToast('No speech detected. Try again.', 'error');
+    } else if (e.error !== 'aborted') {
+      showToast('Mic error: ' + e.error, 'error');
+    }
+    state.recognizing = false;
+    if (state.status === 'listening') setStatus('idle');
+  };
+  
+  recognition.onend = () => {
+    state.recognizing = false;
+    if (state.status === 'listening') {
+      if (finalTranscript.trim()) {
+        handleUserMessage(finalTranscript.trim());
+      } else {
+        setStatus('idle', "Didn't catch that", 'Try again');
+      }
+    }
+  };
+} else {
+  showToast('Speech recognition not supported in this browser', 'error');
+}
+
+// Mic button - FIXED with proper event handling
+micBtn.addEventListener('click', (e) => {
+  e.preventDefault();
+  e.stopPropagation();
+  
+  if (!recognition) {
+    showToast('Speech recognition not available', 'error');
+    return;
+  }
+  
+  if (state.status === 'speaking') {
+    window.speechSynthesis.cancel();
+    setStatus('idle');
+    return;
+  }
+  
+  if (state.recognizing) {
+    recognition.stop();
+    return;
+  }
+  
+  if (state.status === 'thinking') return;
+  
+  try {
+    recognition.start();
+  } catch(e) {
+    console.error('Failed to start recognition:', e);
+    showToast('Could not start microphone', 'error');
+  }
+});
+
+// AI Conversation
+async function handleUserMessage(text) {
+  setStatus('thinking', 'Thinking...', `"${text}"`);
+  state.conversation.push({ role: 'user', content: text });
+  if (state.conversation.length > 20) state.conversation = state.conversation.slice(-20);
+  
+  try {
+    const reply = await callAI(text);
+    setStatus('speaking', 'Speaking...', `"${reply}"`);
+    speak(reply);
+    state.conversation.push({ role: 'assistant', content: reply });
+  } catch (err) {
+    console.error('AI error:', err);
+    showToast(err.message || 'AI unavailable', 'error');
+    setStatus('idle', 'Something went wrong', 'Try again');
+  }
+}
+
+async function callAI(userText) {
+  const endpoint = state.settings.apiEndpoint;
+  const messages = [
+    { role: 'system', content: state.settings.systemPrompt },
+    ...state.conversation
+  ];
+  
+  try {
+    const res = await fetch(endpoint, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ messages })
+    });
+    
+    if (res.ok) {
+      const data = await res.json();
+      if (data && data.reply) return data.reply;
+    }
+  } catch (e) {
+    console.warn('Backend unavailable, using fallback');
+  }
+  
+  return localFallback(userText);
+}
+
+function localFallback(text) {
+  const t = text.toLowerCase();
+  return new Promise(resolve => {
+    setTimeout(() => {
+      let reply;
+      if (/^(hi|hello|hey|yo|sup)\b/.test(t)) reply = "Hello! I'm Sara. How can I help you today?";
+      else if (/who (are you|made you|created you)|your name/.test(t)) reply = "I'm Sara, an AI voice assistant created by Bishal Chaudhary.";
+      else if (/time/.test(t)) reply = `It's currently ${new Date().toLocaleTimeString([], {hour:'2-digit', minute:'2-digit'})}.`;
+      else if (/date|day|today/.test(t)) reply = `Today is ${new Date().toLocaleDateString([], {weekday:'long', month:'long', day:'numeric'})}.`;
+      else if (/thank/.test(t)) reply = "You're very welcome!";
+      else if (/how are you/.test(t)) reply = "I'm doing wonderfully, thank you! How about you?";
+      else if (/joke/.test(t)) reply = "Why don't scientists trust atoms? Because they make up everything!";
+      else if (/bye|goodbye/.test(t)) reply = "Goodbye! Come back anytime.";
+      else {
+        const responses = ["That's interesting. Tell me more.", "I hear you. What would you like to explore?", "Fascinating. How does that make you feel?"];
+        reply = responses[Math.floor(Math.random() * responses.length)];
+      }
+      resolve(reply);
+    }, 600 + Math.random() * 600);
+  });
+}
+
+// Text-to-Speech - FIXED for mobile
+let voices = [];
+
+function loadVoices() {
+  voices = window.speechSynthesis.getVoices();
+  const sel = document.getElementById('voiceSelect');
+  sel.innerHTML = '';
+  
+  const femaleKeywords = ['female','samantha','victoria','karen','zira','jenny','aria','sara','google us english'];
+  const sorted = [...voices].sort((a,b) => {
+    const aF = femaleKeywords.some(k => (a.name+a.voiceURI).toLowerCase().includes(k));
+    const bF = femaleKeywords.some(k => (b.name+b.voiceURI).toLowerCase().includes(k));
+    if (aF && !bF) return -1;
+    if (!aF && bF) return 1;
+    return a.name.localeCompare(b.name);
+  });
+  
+  sorted.forEach(v => {
+    const opt = document.createElement('option');
+    opt.value = v.voiceURI;
+    opt.textContent = `${v.name} (${v.lang})`;
+    sel.appendChild(opt);
+  });
+  
+  if (!state.settings.voiceURI && sorted.length) state.settings.voiceURI = sorted[0].voiceURI;
+  if (state.settings.voiceURI) sel.value = state.settings.voiceURI;
+}
+
+loadVoices();
+if (speechSynthesis.onvoiceschanged !== undefined) {
+  speechSynthesis.onvoiceschanged = loadVoices;
+}
+
+function speak(text) {
+  if (!('speechSynthesis' in window)) {
+    showToast('Text-to-speech not supported', 'error');
+    setStatus('idle');
+    return;
+  }
+  
+  window.speechSynthesis.cancel();
+  
+  const utter = new SpeechSynthesisUtterance(text);
+  const v = voices.find(v => v.voiceURI === state.settings.voiceURI);
+  if (v) utter.voice = v;
+  utter.rate = parseFloat(state.settings.rate);
+  utter.pitch = parseFloat(state.settings.pitch);
+  
+  utter.onend = () => setStatus('idle');
+  utter.onerror = (e) => {
+    console.error('Speech error:', e);
+    setStatus('idle');
+  };
+  
+  window.speechSynthesis.speak(utter);
+}
+
+// Modal handling - FIXED
+function openModal(id) {
+  document.getElementById(id).classList.add('active');
+}
+
+function closeModal(id) {
+  document.getElementById(id).classList.remove('active');
+}
+
+// About modal
+document.getElementById('aboutBtn').addEventListener('click', () => openModal('aboutModal'));
+document.getElementById('aboutClose').addEventListener('click', () => closeModal('aboutModal'));
+
+// Settings modal
+document.getElementById('settingsBtn').addEventListener('click', () => openModal('settingsModal'));
+document.getElementById('settingsClose').addEventListener('click', () => closeModal('settingsModal'));
+
+// Close modal on overlay click
+document.querySelectorAll('.modal-overlay').forEach(overlay => {
+  overlay.addEventListener('click', (e) => {
+    if (e.target === overlay) {
+      overlay.classList.remove('active');
+    }
+  });
+});
+
+// Settings controls
+document.getElementById('rate').addEventListener('input', (e) => {
+  document.getElementById('rateVal').textContent = e.target.value;
+});
+
+document.getElementById('pitch').addEventListener('input', (e) => {
+  document.getElementById('pitchVal').textContent = e.target.value;
+});
+
+document.getElementById('saveSettings').addEventListener('click', () => {
+  state.settings.rate = parseFloat(document.getElementById('rate').value);
+  state.settings.pitch = parseFloat(document.getElementById('pitch').value);
+  state.settings.voiceURI = document.getElementById('voiceSelect').value;
+  localStorage.setItem('sara_settings', JSON.stringify(state.settings));
+  showToast('Settings saved', 'success');
+  closeModal('settingsModal');
+});
+
+document.getElementById('clearHistory').addEventListener('click', () => {
+  state.conversation = [];
+  showToast('Conversation cleared', 'success');
+});
+
+// Initial greeting
+setTimeout(() => setStatus('idle', 'Hello, I am Sara', 'Tap the mic to begin'), 500);
+</script>
+</body>
+</html>
