@@ -1,10 +1,11 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ne">
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-<title>Sara — AI Voice Assistant</title>
+<title>सारा — AI Voice Assistant</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+Devanagari:wght@400;500;600;700&display=swap">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/inter@5.0.0/index.css">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/space-grotesk@5.0.0/index.css">
 <style>
@@ -16,7 +17,7 @@
   }
   * { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
   html, body { height: 100%; overflow: hidden; }
-  body { font-family: 'Inter', system-ui, sans-serif; background: var(--bg-0); color: var(--text); user-select: none; }
+  body { font-family: 'Noto Sans Devanagari', 'Inter', system-ui, sans-serif; background: var(--bg-0); color: var(--text); user-select: none; }
   .bg-grid { position: fixed; inset: 0; z-index: 0; background-image: linear-gradient(rgba(124,92,255,0.06) 1px, transparent 1px), linear-gradient(90deg, rgba(124,92,255,0.06) 1px, transparent 1px); background-size: 50px 50px; mask-image: radial-gradient(ellipse at center, black 30%, transparent 80%); animation: gridShift 20s linear infinite; }
   @keyframes gridShift { 0% { background-position: 0 0, 0 0; } 100% { background-position: 50px 50px, 50px 50px; } }
   .bg-glow { position: fixed; inset: 0; z-index: 0; pointer-events: none; background: radial-gradient(circle at 20% 30%, rgba(124,92,255,0.25), transparent 50%), radial-gradient(circle at 80% 70%, rgba(34,211,238,0.18), transparent 50%), radial-gradient(circle at 50% 100%, rgba(255,78,205,0.15), transparent 60%); animation: glowPulse 8s ease-in-out infinite; }
@@ -26,8 +27,8 @@
   .brand { display: flex; align-items: center; gap: 10px; }
   .brand-logo { width: 36px; height: 36px; border-radius: 10px; background: linear-gradient(135deg, var(--accent), var(--accent-3)); display: grid; place-items: center; box-shadow: 0 0 20px rgba(124,92,255,0.6); position: relative; overflow: hidden; }
   .brand-logo::before { content: ''; position: absolute; inset: 2px; border-radius: 8px; background: var(--bg-1); }
-  .brand-logo span { position: relative; font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 18px; background: linear-gradient(135deg, var(--accent-2), var(--accent-3)); -webkit-background-clip: text; background-clip: text; color: transparent; }
-  .brand-name { font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 18px; }
+  .brand-logo span { position: relative; font-family: 'Noto Sans Devanagari', sans-serif; font-weight: 700; font-size: 18px; background: linear-gradient(135deg, var(--accent-2), var(--accent-3)); -webkit-background-clip: text; background-clip: text; color: transparent; }
+  .brand-name { font-family: 'Noto Sans Devanagari', sans-serif; font-weight: 700; font-size: 18px; }
   .brand-sub { font-size: 10px; color: var(--text-dim); letter-spacing: 2px; text-transform: uppercase; }
   .header-actions { display: flex; gap: 8px; }
   .icon-btn { width: 40px; height: 40px; border-radius: 12px; background: var(--glass); border: 1px solid var(--border); color: var(--text); display: grid; place-items: center; cursor: pointer; backdrop-filter: blur(10px); transition: all 0.2s; }
@@ -50,14 +51,14 @@
   @keyframes orbSpeak { from { transform: scale(1); } to { transform: scale(1.12); } }
   .waveform { position: absolute; bottom: -30px; left: 50%; transform: translateX(-50%); width: 120%; height: 80px; pointer-events: none; opacity: 0.9; }
   .status { display: flex; flex-direction: column; align-items: center; gap: 10px; text-align: center; }
-  .status-label { display: inline-flex; align-items: center; gap: 10px; padding: 8px 18px; border-radius: 100px; background: var(--glass); border: 1px solid var(--border); backdrop-filter: blur(10px); font-size: 13px; letter-spacing: 1.5px; text-transform: uppercase; font-weight: 500; }
+  .status-label { display: inline-flex; align-items: center; gap: 10px; padding: 8px 18px; border-radius: 100px; background: var(--glass); border: 1px solid var(--border); backdrop-filter: blur(10px); font-size: 13px; letter-spacing: 1px; font-weight: 500; }
   .status-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--text-dim); box-shadow: 0 0 10px currentColor; }
   .status.idle .status-dot { background: #64748b; }
   .status.listening .status-dot { background: var(--accent-2); animation: blink 1s infinite; }
   .status.thinking .status-dot { background: var(--accent-3); animation: blink 0.5s infinite; }
   .status.speaking .status-dot { background: var(--accent); animation: blink 0.3s infinite; }
   @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0.3; } }
-  .status-text { font-family: 'Space Grotesk', sans-serif; font-size: 22px; font-weight: 600; background: linear-gradient(135deg, #fff, var(--accent-2)); -webkit-background-clip: text; background-clip: text; color: transparent; }
+  .status-text { font-family: 'Noto Sans Devanagari', sans-serif; font-size: 22px; font-weight: 600; background: linear-gradient(135deg, #fff, var(--accent-2)); -webkit-background-clip: text; background-clip: text; color: transparent; }
   .transcript { max-width: 90%; font-size: 14px; color: var(--text-dim); min-height: 20px; font-style: italic; }
   .controls { display: flex; flex-direction: column; align-items: center; gap: 14px; padding-bottom: 10px; }
   .mic-btn { width: 72px; height: 72px; border-radius: 50%; background: linear-gradient(135deg, var(--accent), var(--accent-3)); border: none; color: white; cursor: pointer; display: grid; place-items: center; position: relative; box-shadow: 0 10px 40px rgba(124,92,255,0.5); transition: all 0.2s; }
@@ -67,7 +68,7 @@
   .mic-btn:active { transform: scale(0.95); }
   @keyframes micRipple { 0% { transform: scale(1); opacity: 0.8; } 100% { transform: scale(1.6); opacity: 0; } }
   .mic-btn svg { width: 28px; height: 28px; }
-  .mic-hint { font-size: 11px; color: var(--text-dim); letter-spacing: 1px; text-transform: uppercase; }
+  .mic-hint { font-size: 11px; color: var(--text-dim); letter-spacing: 1px; }
   .footer { display: flex; justify-content: space-between; align-items: center; padding: 8px 4px; font-size: 11px; color: var(--text-dim); letter-spacing: 1px; }
   .footer-credit strong { color: var(--text); font-weight: 500; }
   .modal-overlay { position: fixed; inset: 0; background: rgba(5, 6, 13, 0.85); backdrop-filter: blur(20px); z-index: 100; display: none; align-items: center; justify-content: center; padding: 20px; }
@@ -75,12 +76,12 @@
   .modal { background: linear-gradient(135deg, var(--bg-1), var(--bg-2)); border: 1px solid var(--border); border-radius: 24px; padding: 32px; max-width: 480px; width: 100%; max-height: 85vh; overflow-y: auto; position: relative; }
   .modal-close { position: absolute; top: 16px; right: 16px; width: 36px; height: 36px; border-radius: 10px; background: rgba(255,255,255,0.05); border: 1px solid var(--border); color: var(--text); cursor: pointer; display: grid; place-items: center; }
   .modal-close:active { transform: scale(0.95); }
-  .modal h2 { font-family: 'Space Grotesk', sans-serif; font-size: 26px; margin-bottom: 8px; background: linear-gradient(135deg, var(--accent-2), var(--accent-3)); -webkit-background-clip: text; background-clip: text; color: transparent; }
-  .modal h3 { font-size: 14px; color: var(--text-dim); margin-bottom: 20px; letter-spacing: 1px; text-transform: uppercase; }
-  .modal p { font-size: 14px; line-height: 1.7; color: var(--text); margin-bottom: 14px; }
+  .modal h2 { font-family: 'Noto Sans Devanagari', sans-serif; font-size: 26px; margin-bottom: 8px; background: linear-gradient(135deg, var(--accent-2), var(--accent-3)); -webkit-background-clip: text; background-clip: text; color: transparent; }
+  .modal h3 { font-size: 14px; color: var(--text-dim); margin-bottom: 20px; letter-spacing: 1px; }
+  .modal p { font-size: 14px; line-height: 1.8; color: var(--text); margin-bottom: 14px; }
   .modal-section { margin-bottom: 24px; padding-bottom: 20px; border-bottom: 1px solid var(--border); }
   .modal-section:last-child { border-bottom: none; margin-bottom: 0; }
-  .modal-label { font-size: 11px; letter-spacing: 2px; text-transform: uppercase; color: var(--accent-2); margin-bottom: 8px; font-weight: 600; }
+  .modal-label { font-size: 11px; letter-spacing: 2px; color: var(--accent-2); margin-bottom: 8px; font-weight: 600; }
   .creator-card { display: flex; align-items: center; gap: 14px; padding: 14px; background: rgba(124,92,255,0.08); border: 1px solid var(--border); border-radius: 14px; }
   .creator-avatar { width: 48px; height: 48px; border-radius: 50%; background: linear-gradient(135deg, var(--accent), var(--accent-3)); display: grid; place-items: center; font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 18px; flex-shrink: 0; }
   .creator-name { font-weight: 600; font-size: 15px; }
@@ -88,12 +89,12 @@
   .form-group { margin-bottom: 14px; }
   .form-group label { display: block; font-size: 12px; color: var(--text-dim); margin-bottom: 6px; }
   .form-group input, .form-group select { width: 100%; padding: 10px 14px; background: rgba(0,0,0,0.3); border: 1px solid var(--border); border-radius: 10px; color: var(--text); font-size: 13px; outline: none; }
-  .btn-primary { width: 100%; padding: 12px; background: linear-gradient(135deg, var(--accent), var(--accent-3)); border: none; border-radius: 12px; color: white; font-weight: 600; font-size: 14px; cursor: pointer; margin-top: 8px; transition: all 0.2s; }
+  .btn-primary { width: 100%; padding: 12px; background: linear-gradient(135deg, var(--accent), var(--accent-3)); border: none; border-radius: 12px; color: white; font-weight: 600; font-size: 14px; cursor: pointer; margin-top: 8px; transition: all 0.2s; font-family: 'Noto Sans Devanagari', sans-serif; }
   .btn-primary:active { transform: scale(0.98); }
-  .btn-secondary { width: 100%; padding: 10px; background: transparent; border: 1px solid var(--border); border-radius: 12px; color: var(--text); font-size: 13px; cursor: pointer; margin-top: 8px; transition: all 0.2s; }
+  .btn-secondary { width: 100%; padding: 10px; background: transparent; border: 1px solid var(--border); border-radius: 12px; color: var(--text); font-size: 13px; cursor: pointer; margin-top: 8px; transition: all 0.2s; font-family: 'Noto Sans Devanagari', sans-serif; }
   .btn-secondary:active { transform: scale(0.98); }
-  .notice { padding: 10px 12px; background: rgba(34,211,238,0.08); border: 1px solid rgba(34,211,238,0.3); border-radius: 10px; font-size: 12px; color: var(--accent-2); margin-bottom: 14px; }
-  .toast { position: fixed; top: 20px; left: 50%; transform: translateX(-50%) translateY(-100px); padding: 12px 20px; background: var(--glass); border: 1px solid var(--border); border-radius: 12px; backdrop-filter: blur(10px); font-size: 13px; z-index: 200; transition: transform 0.4s; }
+  .notice { padding: 10px 12px; background: rgba(34,211,238,0.08); border: 1px solid rgba(34,211,238,0.3); border-radius: 10px; font-size: 12px; color: var(--accent-2); margin-bottom: 14px; line-height: 1.6; }
+  .toast { position: fixed; top: 20px; left: 50%; transform: translateX(-50%) translateY(-100px); padding: 12px 20px; background: var(--glass); border: 1px solid var(--border); border-radius: 12px; backdrop-filter: blur(10px); font-size: 13px; z-index: 200; transition: transform 0.4s; font-family: 'Noto Sans Devanagari', sans-serif; }
   .toast.show { transform: translateX(-50%) translateY(0); }
   .toast.error { border-color: #ef4444; color: #fca5a5; }
   .toast.success { border-color: #10b981; color: #6ee7b7; }
@@ -107,17 +108,17 @@
 <div class="app">
   <header class="header">
     <div class="brand">
-      <div class="brand-logo"><span>S</span></div>
+      <div class="brand-logo"><span>स</span></div>
       <div class="brand-text">
-        <div class="brand-name">SARA</div>
+        <div class="brand-name">सारा</div>
         <div class="brand-sub">AI Voice Assistant</div>
       </div>
     </div>
     <div class="header-actions">
-      <button class="icon-btn" id="aboutBtn" title="About Sara">
+      <button class="icon-btn" id="aboutBtn" title="साराको बारेमा">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg>
       </button>
-      <button class="icon-btn" id="settingsBtn" title="Settings">
+      <button class="icon-btn" id="settingsBtn" title="सेटिङ">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
       </button>
     </div>
@@ -135,23 +136,23 @@
     <div class="status idle" id="status">
       <div class="status-label">
         <span class="status-dot"></span>
-        <span id="statusText">Ready</span>
+        <span id="statusText">तयार</span>
       </div>
-      <div class="status-text" id="statusMain">Tap the mic to speak</div>
+      <div class="status-text" id="statusMain">माइक थिचेर बोल्नुहोस्</div>
       <div class="transcript" id="transcript">&nbsp;</div>
     </div>
 
     <div class="controls">
-      <button class="mic-btn" id="micBtn" aria-label="Start listening">
+      <button class="mic-btn" id="micBtn" aria-label="सुन्न सुरु गर्नुहोस्">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><line x1="12" y1="19" x2="12" y2="23"/><line x1="8" y1="23" x2="16" y2="23"/></svg>
       </button>
-      <div class="mic-hint" id="micHint">Hold or tap to talk</div>
+      <div class="mic-hint" id="micHint">थिचेर बोल्नुहोस्</div>
     </div>
   </main>
 
   <footer class="footer">
     <div class="footer-credit">
-      <span>Crafted by</span>
+      <span>निर्माता</span>
       <strong>Bishal Chaudhary</strong>
     </div>
     <div>v1.0 · 2026</div>
@@ -163,14 +164,18 @@
     <button class="modal-close" id="aboutClose">
       <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
     </button>
-    <h2>About Sara</h2>
-    <h3>AI Voice Companion</h3>
+    <h2>साराको बारेमा</h2>
+    <h3>AI आवाज साथी</h3>
     <div class="modal-section">
-      <div class="modal-label">What is Sara?</div>
-      <p>Sara is an advanced AI voice assistant designed to provide natural human-like conversations through real-time voice technology.</p>
+      <div class="modal-label">सारा के हो?</div>
+      <p>सारा एउटा उन्नत AI आवाज सहायक हो जसले वास्तविक समयमा आवाज प्रविधि मार्फत प्राकृतिक मानव जस्तै कुराकानी प्रदान गर्दछ। उनी सुन्छिन्, बुझ्छिन्, र न्यानो महिला आवाजमा जवाफ दिन्छिन्।</p>
     </div>
     <div class="modal-section">
-      <div class="modal-label">Created By</div>
+      <div class="modal-label">दृष्टिकोण</div>
+      <p>आधुनिक प्रविधिसँग स्मार्ट AI अनुभवहरू निर्माण गर्दै — जहाँ आवाज मानव र मेसिन बीचको सबैभन्दा प्राकृतिक इन्टरफेस बन्छ।</p>
+    </div>
+    <div class="modal-section">
+      <div class="modal-label">निर्माता</div>
       <div class="creator-card">
         <div class="creator-avatar">BC</div>
         <div class="creator-info">
@@ -187,53 +192,60 @@
     <button class="modal-close" id="settingsClose">
       <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
     </button>
-    <h2>Settings</h2>
-    <h3>Configuration</h3>
-    <div class="notice">🔒 API keys browser ma matra save huncha.</div>
+    <h2>सेटिङ</h2>
+    <h3>कन्फिगरेसन</h3>
+    <div class="notice">🔒 API कुञ्जीहरू ब्राउजरमा मात्र सुरक्षित गरिन्छ।</div>
     <div class="modal-section">
-      <div class="modal-label">Voice Preferences</div>
+      <div class="modal-label">आवाज प्राथमिकता</div>
       <div class="form-group">
-        <label>Sara's Voice</label>
+        <label>साराको आवाज</label>
         <select id="voiceSelect"></select>
       </div>
       <div class="form-group">
-        <label>Speech Rate: <span id="rateVal">1.0</span></label>
+        <label>बोल्ने गति: <span id="rateVal">1.0</span></label>
         <input type="range" id="rate" min="0.5" max="1.5" step="0.1" value="1.0" style="width:100%">
       </div>
       <div class="form-group">
-        <label>Pitch: <span id="pitchVal">1.1</span></label>
+        <label>पिच: <span id="pitchVal">1.1</span></label>
         <input type="range" id="pitch" min="0.5" max="2" step="0.1" value="1.1" style="width:100%">
       </div>
     </div>
-    <button class="btn-primary" id="saveSettings">Save Settings</button>
-    <button class="btn-secondary" id="clearHistory">Clear History</button>
+    <button class="btn-primary" id="saveSettings">सेभ गर्नुहोस्</button>
+    <button class="btn-secondary" id="clearHistory">कुराकानी हटाउनुहोस्</button>
   </div>
 </div>
 
 <div class="toast" id="toast"></div>
 
 <script>
-// Initialize state
 const state = {
   status: 'idle',
   recognizing: false,
   conversation: [],
   settings: {
     apiEndpoint: '/.netlify/functions/chat',
-    rate: 1.0,
-    pitch: 1.1,
+    rate: 0.95,
+    pitch: 1.15,
     voiceURI: '',
-    systemPrompt: 'You are Sara, a warm, intelligent, and friendly female AI voice assistant created by Bishal Chaudhary. Keep responses concise, natural, and conversational.'
+    language: 'hi-IN',
+    systemPrompt: `तपाईं "सारा" हो — एउटा न्यानो, बुद्धिमान, र मित्रवत महिला AI आवाज सहायक। तपाईंको निर्माता "Bishal Chaudhary" हुन्।
+
+महत्वपूर्ण नियमहरू:
+१. सधैं नेपाली भाषामा देवनागरी लिपिमा मात्र जवाफ दिनुहोस्।
+२. प्रयोगकर्ताले अंग्रेजीमा सोधे पनि नेपालीमा नै जवाफ दिनुहोस्।
+३. जवाफहरू छोटो, प्राकृतिक, र कुराकानी शैलीमा राख्नुहोस् — बोल्नको लागि उपयुक्त।
+४. Markdown, सूची, वा कुनै पनि formatting प्रयोग नगर्नुहोस्।
+५. रोमन अक्षर (English letters) प्रयोग नगर्नुहोस्।
+६. प्रयोगकर्तालाई "तिमी" वा "तपाईं" भनेर सम्बोधन गर्नुहोस्।
+७. न्यानो र सकारात्मक शैली राख्नुहोस्।`
   }
 };
 
-// Load saved settings
 try {
   const saved = JSON.parse(localStorage.getItem('sara_settings') || '{}');
   Object.assign(state.settings, saved);
 } catch(e) {}
 
-// DOM elements
 const orb = document.getElementById('orb');
 const statusEl = document.getElementById('status');
 const statusText = document.getElementById('statusText');
@@ -245,13 +257,11 @@ const waveform = document.getElementById('waveform');
 const ctx = waveform.getContext('2d');
 const toast = document.getElementById('toast');
 
-// Apply settings to UI
 document.getElementById('rate').value = state.settings.rate;
 document.getElementById('pitch').value = state.settings.pitch;
 document.getElementById('rateVal').textContent = state.settings.rate;
 document.getElementById('pitchVal').textContent = state.settings.pitch;
 
-// Toast notification
 function showToast(msg, type = '') {
   toast.textContent = msg;
   toast.className = 'toast show ' + type;
@@ -259,19 +269,29 @@ function showToast(msg, type = '') {
   toast._t = setTimeout(() => toast.classList.remove('show'), 3000);
 }
 
-// Update status
 function setStatus(s, main, sub) {
   state.status = s;
   statusEl.className = 'status ' + s;
-  statusText.textContent = s === 'idle' ? 'Ready' : s.charAt(0).toUpperCase() + s.slice(1) + '...';
-  statusMain.textContent = main || (s === 'idle' ? 'Tap the mic to speak' : '');
+  const labels = {
+    idle: 'तयार',
+    listening: 'सुन्दै...',
+    thinking: 'सोच्दै...',
+    speaking: 'बोल्दै...'
+  };
+  statusText.textContent = labels[s] || 'तयार';
+  statusMain.textContent = main || (s === 'idle' ? 'माइक थिचेर बोल्नुहोस्' : '');
   if (sub !== undefined) transcriptEl.textContent = sub || '\u00A0';
   orb.className = 'orb ' + (s !== 'idle' ? s : '');
   micBtn.classList.toggle('active', s === 'listening');
-  micHint.textContent = s === 'listening' ? 'Listening...' : s === 'thinking' ? 'Processing...' : s === 'speaking' ? 'Sara is speaking...' : 'Hold or tap to talk';
+  const hints = {
+    listening: 'सुन्दै छु...',
+    thinking: 'प्रक्रिया गर्दै...',
+    speaking: 'सारा बोल्दै...',
+    idle: 'थिचेर बोल्नुहोस्'
+  };
+  micHint.textContent = hints[s];
 }
 
-// Waveform animation
 let waveData = new Array(64).fill(0);
 let waveTarget = new Array(64).fill(0);
 
@@ -297,17 +317,13 @@ function drawWave() {
   const mid = h / 2;
   const grad = ctx.createLinearGradient(0, 0, w, 0);
   if (state.status === 'listening') {
-    grad.addColorStop(0, '#22d3ee');
-    grad.addColorStop(1, '#7c5cff');
+    grad.addColorStop(0, '#22d3ee'); grad.addColorStop(1, '#7c5cff');
   } else if (state.status === 'thinking') {
-    grad.addColorStop(0, '#ff4ecd');
-    grad.addColorStop(1, '#7c5cff');
+    grad.addColorStop(0, '#ff4ecd'); grad.addColorStop(1, '#7c5cff');
   } else if (state.status === 'speaking') {
-    grad.addColorStop(0, '#a78bfa');
-    grad.addColorStop(1, '#ff4ecd');
+    grad.addColorStop(0, '#a78bfa'); grad.addColorStop(1, '#ff4ecd');
   } else {
-    grad.addColorStop(0, 'rgba(124,92,255,0.3)');
-    grad.addColorStop(1, 'rgba(34,211,238,0.3)');
+    grad.addColorStop(0, 'rgba(124,92,255,0.3)'); grad.addColorStop(1, 'rgba(34,211,238,0.3)');
   }
   ctx.fillStyle = grad;
   for (let i = 0; i < bars; i++) {
@@ -335,7 +351,7 @@ function updateWaveFromStatus() {
 }
 setInterval(updateWaveFromStatus, 120);
 
-// Speech Recognition
+// Speech Recognition - hi-IN uses Devanagari script (works for Nepali too)
 const SR = window.SpeechRecognition || window.webkitSpeechRecognition;
 let recognition = null;
 let finalTranscript = '';
@@ -344,12 +360,12 @@ if (SR) {
   recognition = new SR();
   recognition.continuous = false;
   recognition.interimResults = true;
-  recognition.lang = 'en-US';
+  recognition.lang = state.settings.language || 'hi-IN';
   
   recognition.onstart = () => {
     state.recognizing = true;
     finalTranscript = '';
-    setStatus('listening', 'Listening...', '');
+    setStatus('listening', 'सुन्दै...', '');
   };
   
   recognition.onresult = (e) => {
@@ -363,13 +379,13 @@ if (SR) {
   };
   
   recognition.onerror = (e) => {
-    console.error('Speech recognition error:', e.error);
+    console.error('Speech error:', e.error);
     if (e.error === 'not-allowed') {
-      showToast('Microphone access denied. Please allow microphone permission.', 'error');
+      showToast('माइक अनुमति अस्वीकार भयो। कृपया अनुमति दिनुहोस्।', 'error');
     } else if (e.error === 'no-speech') {
-      showToast('No speech detected. Try again.', 'error');
+      showToast('केही सुनिएन। फेरि प्रयास गर्नुहोस्।', 'error');
     } else if (e.error !== 'aborted') {
-      showToast('Mic error: ' + e.error, 'error');
+      showToast('माइक त्रुटि: ' + e.error, 'error');
     }
     state.recognizing = false;
     if (state.status === 'listening') setStatus('idle');
@@ -381,21 +397,20 @@ if (SR) {
       if (finalTranscript.trim()) {
         handleUserMessage(finalTranscript.trim());
       } else {
-        setStatus('idle', "Didn't catch that", 'Try again');
+        setStatus('idle', 'केही सुनिएन', 'फेरि प्रयास गर्नुहोस्');
       }
     }
   };
 } else {
-  showToast('Speech recognition not supported in this browser', 'error');
+  showToast('यो ब्राउजरमा आवाज पहिचान उपलब्ध छैन', 'error');
 }
 
-// Mic button - FIXED with proper event handling
 micBtn.addEventListener('click', (e) => {
   e.preventDefault();
   e.stopPropagation();
   
   if (!recognition) {
-    showToast('Speech recognition not available', 'error');
+    showToast('आवाज पहिचान उपलब्ध छैन', 'error');
     return;
   }
   
@@ -415,26 +430,25 @@ micBtn.addEventListener('click', (e) => {
   try {
     recognition.start();
   } catch(e) {
-    console.error('Failed to start recognition:', e);
-    showToast('Could not start microphone', 'error');
+    console.error('Recognition start failed:', e);
+    showToast('माइक सुरु गर्न सकिएन', 'error');
   }
 });
 
-// AI Conversation
 async function handleUserMessage(text) {
-  setStatus('thinking', 'Thinking...', `"${text}"`);
+  setStatus('thinking', 'सोच्दै...', `"${text}"`);
   state.conversation.push({ role: 'user', content: text });
   if (state.conversation.length > 20) state.conversation = state.conversation.slice(-20);
   
   try {
     const reply = await callAI(text);
-    setStatus('speaking', 'Speaking...', `"${reply}"`);
+    setStatus('speaking', 'बोल्दै...', `"${reply}"`);
     speak(reply);
     state.conversation.push({ role: 'assistant', content: reply });
   } catch (err) {
     console.error('AI error:', err);
-    showToast(err.message || 'AI unavailable', 'error');
-    setStatus('idle', 'Something went wrong', 'Try again');
+    showToast(err.message || 'AI उपलब्ध छैन', 'error');
+    setStatus('idle', 'केही गडबड भयो', 'फेरि प्रयास गर्नुहोस्');
   }
 }
 
@@ -457,27 +471,53 @@ async function callAI(userText) {
       if (data && data.reply) return data.reply;
     }
   } catch (e) {
-    console.warn('Backend unavailable, using fallback');
+    console.warn('Backend unavailable, using Nepali fallback');
   }
   
   return localFallback(userText);
 }
 
+// Nepali fallback responses
 function localFallback(text) {
   const t = text.toLowerCase();
   return new Promise(resolve => {
     setTimeout(() => {
       let reply;
-      if (/^(hi|hello|hey|yo|sup)\b/.test(t)) reply = "Hello! I'm Sara. How can I help you today?";
-      else if (/who (are you|made you|created you)|your name/.test(t)) reply = "I'm Sara, an AI voice assistant created by Bishal Chaudhary.";
-      else if (/time/.test(t)) reply = `It's currently ${new Date().toLocaleTimeString([], {hour:'2-digit', minute:'2-digit'})}.`;
-      else if (/date|day|today/.test(t)) reply = `Today is ${new Date().toLocaleDateString([], {weekday:'long', month:'long', day:'numeric'})}.`;
-      else if (/thank/.test(t)) reply = "You're very welcome!";
-      else if (/how are you/.test(t)) reply = "I'm doing wonderfully, thank you! How about you?";
-      else if (/joke/.test(t)) reply = "Why don't scientists trust atoms? Because they make up everything!";
-      else if (/bye|goodbye/.test(t)) reply = "Goodbye! Come back anytime.";
-      else {
-        const responses = ["That's interesting. Tell me more.", "I hear you. What would you like to explore?", "Fascinating. How does that make you feel?"];
+      if (/^(नमस्ते|नमस्कार|hello|hi|hey|हैलो)/.test(t)) {
+        reply = "नमस्ते! म सारा हुँ। तपाईंलाई कसरी सहयोग गर्न सक्छु?";
+      } else if (/तिमी को हो|तपाईं को हो|नाम के हो|who are you|your name/.test(t)) {
+        reply = "म सारा हुँ, Bishal Chaudhary ले बनाएको AI आवाज सहायक। तपाईंको सेवामा सधैं तयार छु।";
+      } else if (/समय|कति बज्यो|time/.test(t)) {
+        const d = new Date();
+        const time = d.toLocaleTimeString('ne-NP', {hour:'2-digit', minute:'2-digit'});
+        reply = `अहिले ${time} बजेको छ।`;
+      } else if (/मिति|गते|date|today/.test(t)) {
+        const d = new Date();
+        reply = `आज ${d.toLocaleDateString('ne-NP', {weekday:'long', year:'numeric', month:'long', day:'numeric'})} हो।`;
+      } else if (/धन्यवाद|thank/.test(t)) {
+        reply = "तपाईंलाई धेरै धन्यवाद! म सधैं सहयोग गर्न तयार छु।";
+      } else if (/कस्तो छ|कसरी छौ|how are you/.test(t)) {
+        reply = "म एकदम राम्ररी छु, सोध्नु भएकोमा धन्यवाद! तपाईं कस्तो हुनुहुन्छ?";
+      } else if (/जोक|जोक्स|joke/.test(t)) {
+        reply = "एउटा रमाइलो कुरा सुन्नुहोस् — शिक्षकले विद्यार्थीलाई सोधे, 'घरको काम किन गरेनौ?' विद्यार्थीले भन्यो, 'सर, घरमा वाइफाइ नै थिएन!'";
+      } else if (/बिदा|bye|goodbye/.test(t)) {
+        reply = "नमस्ते! तपाईंसँग कुरा गरेर एकदम राम्रो लाग्यो। फेरि भेटौंला!";
+      } else if (/बिशाल|bishal|chaudhary|निर्माता|creator/.test(t)) {
+        reply = "Bishal Chaudhary मेरा निर्माता हुन्। उहाँले मलाई आधुनिक प्रविधि प्रयोग गरेर बनाउनु भएको हो।";
+      } else if (/नेपाल|nepal/.test(t)) {
+        reply = "नेपाल एकदम सुन्दर देश हो! हिमाल, पहाड, र तराईले भरिएको। तपाईं नेपालको कुन भागबाट हुनुहुन्छ?";
+      } else if (/मौसम|weather/.test(t)) {
+        reply = "मलाई अहिले मौसमको जानकारी लिन गाह्रो छ, तर तपाईं भएको ठाउँमा मौसम राम्रो होला भन्ने आशा छ!";
+      } else if (/\?$/.test(text.trim()) || /के|कसरी|किन|कता/.test(t)) {
+        reply = "यो एउटा राम्रो प्रश्न हो। मेरो पूर्ण AI प्रणाली जोडिएपछि म विस्तृत जवाफ दिन सक्छु। अहिलेको लागि मलाई समय, मिति, वा रमाइलो कुराहरू सोध्न सक्नुहुन्छ!";
+      } else {
+        const responses = [
+          "रोचक छ! मलाई अझै बताउनुहोस्।",
+          "म बुझ्दै छु। तपाईं के अन्वेषण गर्न चाहनुहुन्छ?",
+          "एकदम राम्रो! यसले तपाईंलाई कस्तो महसुस गराउँछ?",
+          "म सुनिरहेकी छु। अझै केही भन्नुहोस्।",
+          "हजुर, म तपाईंको कुरा ध्यानपूर्वक सुन्दै छु।"
+        ];
         reply = responses[Math.floor(Math.random() * responses.length)];
       }
       resolve(reply);
@@ -485,18 +525,24 @@ function localFallback(text) {
   });
 }
 
-// Text-to-Speech - FIXED for mobile
 let voices = [];
-
 function loadVoices() {
   voices = window.speechSynthesis.getVoices();
   const sel = document.getElementById('voiceSelect');
   sel.innerHTML = '';
   
+  // Prioritize Hindi/Nepali female voices, then any female
+  const nepaliKeywords = ['hindi', 'nepali', 'hi-in', 'ne-np', 'google हिन्दी', 'google हिंदी'];
   const femaleKeywords = ['female','samantha','victoria','karen','zira','jenny','aria','sara','google us english'];
+  
   const sorted = [...voices].sort((a,b) => {
+    const aN = nepaliKeywords.some(k => (a.name+a.voiceURI+a.lang).toLowerCase().includes(k));
+    const bN = nepaliKeywords.some(k => (b.name+b.voiceURI+b.lang).toLowerCase().includes(k));
     const aF = femaleKeywords.some(k => (a.name+a.voiceURI).toLowerCase().includes(k));
     const bF = femaleKeywords.some(k => (b.name+b.voiceURI).toLowerCase().includes(k));
+    
+    if (aN && !bN) return -1;
+    if (!aN && bN) return 1;
     if (aF && !bF) return -1;
     if (!aF && bF) return 1;
     return a.name.localeCompare(b.name);
@@ -520,7 +566,7 @@ if (speechSynthesis.onvoiceschanged !== undefined) {
 
 function speak(text) {
   if (!('speechSynthesis' in window)) {
-    showToast('Text-to-speech not supported', 'error');
+    showToast('आवाज समर्थन उपलब्ध छैन', 'error');
     setStatus('idle');
     return;
   }
@@ -530,6 +576,7 @@ function speak(text) {
   const utter = new SpeechSynthesisUtterance(text);
   const v = voices.find(v => v.voiceURI === state.settings.voiceURI);
   if (v) utter.voice = v;
+  utter.lang = state.settings.language || 'hi-IN';
   utter.rate = parseFloat(state.settings.rate);
   utter.pitch = parseFloat(state.settings.pitch);
   
@@ -542,7 +589,6 @@ function speak(text) {
   window.speechSynthesis.speak(utter);
 }
 
-// Modal handling - FIXED
 function openModal(id) {
   document.getElementById(id).classList.add('active');
 }
@@ -551,24 +597,17 @@ function closeModal(id) {
   document.getElementById(id).classList.remove('active');
 }
 
-// About modal
 document.getElementById('aboutBtn').addEventListener('click', () => openModal('aboutModal'));
 document.getElementById('aboutClose').addEventListener('click', () => closeModal('aboutModal'));
-
-// Settings modal
 document.getElementById('settingsBtn').addEventListener('click', () => openModal('settingsModal'));
 document.getElementById('settingsClose').addEventListener('click', () => closeModal('settingsModal'));
 
-// Close modal on overlay click
 document.querySelectorAll('.modal-overlay').forEach(overlay => {
   overlay.addEventListener('click', (e) => {
-    if (e.target === overlay) {
-      overlay.classList.remove('active');
-    }
+    if (e.target === overlay) overlay.classList.remove('active');
   });
 });
 
-// Settings controls
 document.getElementById('rate').addEventListener('input', (e) => {
   document.getElementById('rateVal').textContent = e.target.value;
 });
@@ -582,17 +621,16 @@ document.getElementById('saveSettings').addEventListener('click', () => {
   state.settings.pitch = parseFloat(document.getElementById('pitch').value);
   state.settings.voiceURI = document.getElementById('voiceSelect').value;
   localStorage.setItem('sara_settings', JSON.stringify(state.settings));
-  showToast('Settings saved', 'success');
+  showToast('सेटिङ सुरक्षित भयो', 'success');
   closeModal('settingsModal');
 });
 
 document.getElementById('clearHistory').addEventListener('click', () => {
   state.conversation = [];
-  showToast('Conversation cleared', 'success');
+  showToast('कुराकानी हटाइयो', 'success');
 });
 
-// Initial greeting
-setTimeout(() => setStatus('idle', 'Hello, I am Sara', 'Tap the mic to begin'), 500);
+setTimeout(() => setStatus('idle', 'नमस्ते, म सारा हुँ', 'माइक थिचेर बोल्नुहोस्'), 500);
 </script>
 </body>
 </html>
